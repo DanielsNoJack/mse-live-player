@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "test": "node compare.js",
-    "start": "node server.js",
+    "start": "node server_lite.js",
     "lint": "standard --verbose server.js ./routes/routes.js",
     "lint:fix": "standard --fix server.js ./routes/routes.js"
   },
