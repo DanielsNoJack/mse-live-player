@@ -2,15 +2,9 @@
 
 Fork version from original kevinGodell
 
-1. Removed the need to recode video to mjpeg, because of too much CPU used on small pltaform such as Odroid or Raspberry
+1. Removed the need to recode video to mjpeg, because of too much CPU used on small pltaform such as Odroid or Raspberry. If you don't define pipe:4 for mjpeg transcode CPU load will decline rapidly from 14 to 0.5. Only feature you lost is posibbility of making snapshots
 
-If you don't define pipe:4 for mjpeg transcode CPU load will decline rapidly from 14 to 0.5
-Only feature you lost is posibbility of making snapshots
-
-2. Added posibility to set different ws url
-
-If you want to integrate player into website on differen url
-Especially for vpn access.
+2. Added posibility to set different ws url. If you want to integrate player into website on differen url. Especially for vpn access.
 
 For example:
 
@@ -55,13 +49,12 @@ Then I use this video element on web page:
 
 ```
 
-=========== INSTALL ================
-
+=================================== INSTALL ===================================
 
 install files with git
 
 ```
-git clone https://github.com/kevinGodell/mse-live-player.git
+git clone https://github.com/DanielsNoJack/mse-live-player.git
 ```
 
 move into directory
@@ -74,7 +67,11 @@ install node module dependencies
 
 ```
 npm install
+
 ```
+edit db.json to setup cameras
+
+edit index.html to arange website
 
 start the example server
 
@@ -83,6 +80,3 @@ npm start
 ```
 
 open compatible browser to localhost:8080
-
-
-
