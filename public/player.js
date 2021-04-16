@@ -29,6 +29,14 @@ class VideoPlayer {
             this._callback('"options.io is not an instance of socket.io');
             return;
         }
+       if (!options.socket_url) 
+       {
+            this._socket_url = window.location.origin
+       }
+       else
+       {
+        this._socket_url = options.socket_url;
+       }
         this._video = options.video;
         if (options.controls) {
             const stb = options.controls.indexOf('startstop') !== -1;
@@ -266,7 +274,7 @@ class VideoPlayer {
             this._startstop.disabled = true;
         }
         this._playing = true;
-        this._socket = this._io(`${location.origin}/${namespace}`, {transports: ['websocket'], forceNew: false});
+        this._socket = this._io(this._socket_url + `/${namespace}`, {transports: ['websocket'], forceNew: false});
         this._addSocketEvents();
         if (this._startstop) {
             this._startstop.disabled = false;
@@ -556,31 +564,22 @@ class VideoPlayer {
     const videos = document.getElementsByTagName('video');
 
     //array to keep reference to newly created VideoPlayers, maybe could be a keyed object
-    //const videoPlayers = [];
+    const videoPlayers = [];
 
     for (let i = 0; i < videos.length; i++) {
         const video = videos[i];
         //only grab video elements that deliberately have data-namespace attribute
         if (video.dataset.namespace) {
-            const videoPlayer = new VideoPlayer({video: video, io: io, namespace: video.dataset.namespace, controls: video.dataset.controls});
+            const videoPlayer = new VideoPlayer({socket_url: video.dataset.socket, video: video, io: io, namespace: video.dataset.namespace, controls: video.dataset.controls});
             if (video.autoplay) {
                 videoPlayer.start();
             }
-            //videoPlayers.push(videoPlayer);
+            videoPlayers.push(videoPlayer);
         }
     }
 
     //make videoPlayers accessible
-    //window.videoPlayers = videoPlayers;
+    window.videoPlayers = videoPlayers;
 
 })(window);
 
-//todo steps for creation of video player
-//script is loaded at footer so that it can run after html is ready on page
-//verify that socket.io is defined in window
-//iterate each video element that has custom data-namespace attributes that we need
-//initiate socket to get information from server
-//first request codec string to test against browser and then feed first into source
-//then request init-segment to feed
-//then request media segments until we run into pause, stop, close, error, buffer not ready, etc
-//change poster on video element based on current status, error, not ready, etc

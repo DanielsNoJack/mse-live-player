@@ -1,50 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>player</title>
-    <link href='/public/player.css' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <!--<script defer src="https://use.fontawesome.com/releases/v5.0.1/js/all.js"></script>-->
-    <style>
-        video {
-            width: 275px;
-            height: 210px;
-        }
-    </style>
-</head>
-<body>
-
-<video autoplay muted data-namespace="one" data-controls="startstop|fullscreen|snapshot|cycle"></video>
-
-<video autoplay muted data-namespace="two" data-controls="startstop|fullscreen|snapshot|cycle"></video>
-
-<video autoplay muted data-namespace="three" data-controls="startstop|fullscreen|snapshot|cycle"></video>
-
-<video autoplay muted data-namespace="four" data-controls="startstop|fullscreen|snapshot|cycle"></video>
-
-<video autoplay muted data-namespace="five" data-controls="startstop|fullscreen|snapshot|cycle"></video>
-
-<video autoplay muted data-namespace="six" data-controls="startstop|fullscreen|snapshot|cycle"></video>
-
-<video autoplay muted data-namespace="seven" data-controls="startstop|fullscreen|snapshot|cycle"></video>
-
-<video autoplay muted data-namespace="eight" data-controls="startstop|fullscreen|snapshot|cycle"></video>
-
-<video autoplay muted data-namespace="nine" data-controls="startstop|fullscreen|snapshot|cycle"></video>
-
-<video autoplay muted data-namespace="ten" data-controls="startstop|fullscreen|snapshot|cycle"></video>
-
-<video autoplay muted data-namespace="eleven" data-controls="startstop|fullscreen|snapshot|cycle"></video>
-
-<video autoplay muted data-namespace="twelve" data-controls="startstop|fullscreen|snapshot|cycle"></video>
-
-<video autoplay muted data-namespace="thirteen" data-controls="startstop|fullscreen|snapshot|cycle"></video>
-
-<video autoplay muted data-namespace="forteen" data-controls="startstop|fullscreen|snapshot|cycle"></video>
-
-<script src ="/socket.io/socket.io.js"></script>
-<script src="/public/player.min.js">//script runs and builds mse players on top of video elements that have valid data-namespace attribute</script>
-
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <title>Video h264 player example</title>
+        <link href='/public/player.css' rel='stylesheet' type='text/css'>
+        <style>
+            video {
+                width: 275px;
+                height: 210px;
+            }
+        </style>
+    </head>
+    <body>
+        <video autoplay muted data-namespace="cam1" data-socket="wss://hyff2d3fs6fdh.adamassistant.com" data-controls="startstop|fullscreen|cycle"></video>
+        <video autoplay muted data-namespace="cam2" data-socket="wss://hyff2d3fs6fdh.adamassistant.com" data-controls="startstop|fullscreen|cycle"></video>
+        <script src ="/socket.io/socket.io.js"></script>
+        <script src="/public/player.js"></script>
+    </body>
 </html>
+
